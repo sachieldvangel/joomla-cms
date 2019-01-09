@@ -13,6 +13,7 @@ defined('JPATH_PLATFORM') or die;
 use Joomla\CMS\Filesystem\Wrapper\PathWrapper;
 use Joomla\CMS\Filesystem\Wrapper\FileWrapper;
 use Joomla\CMS\Crypt\Crypt;
+use Joomla\CMS\Factory;
 
 if (!defined('JPATH_ROOT'))
 {
@@ -255,7 +256,7 @@ class Path
 	{
 		$tmp = md5(Crypt::genRandomBytes());
 		$ssp = ini_get('session.save_path');
-		$jtp = JPATH_SITE . '/tmp';
+		$jtp = Factory::getConfig()->get('tmp_path');	
 
 		// Try to find a writable directory
 		$dir = false;
